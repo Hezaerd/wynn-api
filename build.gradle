@@ -3,6 +3,7 @@ import com.diffplug.spotless.LineEnding
 plugins {
 	id 'fabric-loom' version "${loom_version}"
 	id 'com.diffplug.spotless' version "${spotless_version}"
+	id 'maven-publish'
 }
 
 version = project.mod_version
@@ -34,7 +35,7 @@ dependencies {
 
 	// Fabric API
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
+
 	implementation "com.google.code.gson:gson:${project.gson_version}"
 }
 
@@ -62,5 +63,53 @@ jar {
 
 	from("LICENSE") {
 		rename { "${it}_${inputs.properties.archivesName}"}
+	}
+}
+
+publishing {
+	publications {
+		maven(MavenPublication) {
+			from components.java
+
+			artifact sourcesJar
+
+			pom {
+				name = 'Wynn API'
+				description = 'A Fabric library mod to wrap the Wynncraft API v3 and provide easy-to-use functionality for other mods.'
+				url = 'https://github.com/hezaerd/wynn-api'
+
+				licenses {
+					license {
+						name = 'MIT'
+						url = 'https://opensource.org/licenses/MIT'
+					}
+				}
+
+				developers {
+					developer {
+						id = 'hezaerd'
+						name = 'Hezaerd'
+						url = 'https://hezaerd.com/'
+					}
+				}
+
+				scm {
+					connection = 'scm:git:git://github.com/hezaerd/wynn-api.git'
+					developerConnection = 'scm:git:ssh://github.com:hezaerd/wynn-api.git'
+					url = 'https://github.com/hezaerd/wynn-api'
+				}
+			}
+		}
+	}
+
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/hezaerd/wynn-api")
+			credentials {
+				username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+				password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+			}
+		}
 	}
 }
