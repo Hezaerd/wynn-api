@@ -1,30 +1,30 @@
-package com.hezaerd.wapi.responses;
-
-import com.google.gson.annotations.SerializedName;
+package com.hezaerd.wapi.models;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Generic wrapper for all Wynncraft API responses.
  * This class provide a consistent structure for handling API responses
  * with proper error handling and data extraction.
- * 
+ *
  * @param <T> The type of the data.
  */
 public class ApiResponse<T> {
 	@SerializedName("success")
 	private final boolean success;
-	
+
 	@SerializedName("data")
 	private final T data;
-	
+
 	@SerializedName("error")
 	private final String error;
-	
+
 	@SerializedName("timestamp")
 	private final long timestamp;
-	
+
 	/**
 	 * Create a successful ApiResponse.
 	 *
@@ -38,7 +38,7 @@ public class ApiResponse<T> {
 
 	/**
 	 * Create a failed ApiResponse.
-	 * 
+	 *
 	 * @param errorMessage The error message.
 	 * @param <T> The type of the data.
 	 * @return An error ApiResponse.
@@ -46,10 +46,10 @@ public class ApiResponse<T> {
 	public static <T> ApiResponse<T> failure(String errorMessage) {
 		return new ApiResponse<>(false, null, errorMessage, System.currentTimeMillis());
 	}
-	
+
 	/**
 	 * Create a failed ApiResponse with a specific timestamp.
-	 * 
+	 *
 	 * @param errorMessage The error message.
 	 * @param timestamp The timestamp of the error.
 	 * @param <T> The type of the data.
@@ -165,7 +165,7 @@ public class ApiResponse<T> {
 		}
 		return this;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ApiResponse{" +
