@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "wapi",
+	"version": "${version}",
+	"name": "Wynn API",
+	"description": "",
+	"authors": ["Hezaerd"],
+	"contact": {
+		"homepage": "https://hezaerd.com/",
+		"sources": "https://github.com/hezaerd/wynn-api"
+	},
+	"license": "MIT",
+	"icon": "assets/wapi/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["com.hezaerd.WynnAPI"]
+	},
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
