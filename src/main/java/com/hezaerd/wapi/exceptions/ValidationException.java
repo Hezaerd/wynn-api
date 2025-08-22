@@ -1,7 +1,7 @@
 package com.hezaerd.wapi.exceptions;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Exception thrown when input validation fails.
