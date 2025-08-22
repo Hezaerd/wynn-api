@@ -70,9 +70,7 @@ publishing {
 	publications {
 		maven(MavenPublication) {
 			from components.java
-
-			artifact sourcesJar
-
+			
 			pom {
 				name = 'Wynn API'
 				description = 'A Fabric library mod to wrap the Wynncraft API v3 and provide easy-to-use functionality for other mods.'
