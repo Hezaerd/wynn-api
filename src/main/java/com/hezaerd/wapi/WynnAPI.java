@@ -1,6 +1,6 @@
-package com.hezaerd;
+package com.hezaerd.wapi;
 
-import com.hezaerd.utils.ModLib;
+import com.hezaerd.wapi.utils.ModLib;
 import net.fabricmc.api.ModInitializer;
 
 public class WynnAPI implements ModInitializer {

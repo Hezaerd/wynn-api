@@ -13,7 +13,9 @@
 	"icon": "assets/wapi/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": ["com.hezaerd.WynnAPI"]
+		"main": [
+      "com.hezaerd.wapi.WynnAPI"
+    ]
 	},
 	"depends": {
 		"fabricloader": ">=0.17.2",
