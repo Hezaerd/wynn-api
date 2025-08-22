@@ -14,6 +14,9 @@ on:
 jobs:
   publish-and-release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
     - name: Checkout code
@@ -29,7 +32,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v3
+      uses: gradle/actions/setup-gradle@v4
 
     - name: Update version if provided
       if: github.event.inputs.version != ''
