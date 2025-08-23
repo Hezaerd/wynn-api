@@ -1,8 +1,8 @@
 <div align="center">
-  <a href="https://modrinth.com/mod/wynn-api">
+  <a href="https://modrinth.com/mod/wapi">
     <img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg">
   </a>
-  <a href="https://github.com/Hezaerd/wynn-api">
+  <a href="https://github.com/Hezaerd/wapi">
     <img alt="github" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/github_vector.svg">
   </a>
 <br>
@@ -12,7 +12,7 @@
 
 <br/>
 
-# Wynn API
+# WAPI
 
 A Fabric library mod that provides a simple and easy-to-use wrapper for the Wynncraft API v3. This mod allows other mods to easily interact with Wynncraft's game data including players, guilds, items, leaderboards, and more.
 
@@ -35,7 +35,7 @@ Add the following to your `build.gradle`:
 
 ```gradle
 dependencies {
-    // Add Wynn API as a dependency
+    // Add WAPI as a dependency
     modImplementation "com.hezaerd:wapi:${wapi_version}"
 }
 ```
@@ -133,8 +133,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Links
 
 - **Author**: [Hezaerd](https://hezaerd.com/)
-- **Source Code**: [GitHub](https://github.com/hezaerd/wynn-api)
-- **Modrinth**: [Download](https://modrinth.com/mod/wynn-api)
+- **Source Code**: [GitHub](https://github.com/hezaerd/wapi)
+- **Modrinth**: [Download](https://modrinth.com/mod/wapi)
 
 <br>
 
@@ -147,6 +147,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 </p>
 
 <div align="center">
-<a href="https://github.com/hezaerd/wynn-api/blob/master/LICENSE"><img src="https://img.shields.io/github/license/hezaerd/wynn-api?logoColor=cdd6f4&labelColor=302D41&color=CBA6F7
+<a href="https://github.com/hezaerd/wapi/blob/master/LICENSE"><img src="https://img.shields.io/github/license/hezaerd/wapi?logoColor=cdd6f4&labelColor=302D41&color=CBA6F7
 " alt="LICENSE"></a>&nbsp;&nbsp;
 </div>

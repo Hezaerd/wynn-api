@@ -2,19 +2,19 @@
 	"schemaVersion": 1,
 	"id": "wapi",
 	"version": "${version}",
-	"name": "Wynn API",
+	"name": "wapi",
 	"description": "A Fabric library mod to wrap the Wynncraft API v3 and provide easy-to-use functionality for other mods.",
 	"authors": ["Hezaerd"],
 	"contact": {
 		"homepage": "https://hezaerd.com/",
-		"sources": "https://github.com/hezaerd/wynn-api"
+		"sources": "https://github.com/hezaerd/wapi"
 	},
 	"license": "MIT",
 	"icon": "assets/wapi/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-      "com.hezaerd.wapi.WynnAPI"
+      "com.hezaerd.wapi.Wapi"
     ]
 	},
 	"depends": {
