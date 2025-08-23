@@ -34,6 +34,13 @@ A Fabric library mod that provides a simple and easy-to-use wrapper for the Wynn
 Add the following to your `build.gradle`:
 
 ```gradle
+repositories {
+    maven {
+        name = "GitHubPackages"
+        url = url("https://maven.pkg.github.com/hezaerd/wapi)
+    }
+}
+
 dependencies {
     // Add WAPI as a dependency
     modImplementation "com.hezaerd:wapi:${wapi_version}"
