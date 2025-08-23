@@ -4,6 +4,7 @@ plugins {
 	id 'fabric-loom' version "${loom_version}"
 	id 'com.diffplug.spotless' version "${spotless_version}"
 	id 'maven-publish'
+	id 'com.modrinth.minotaur' version "${minotaur_version}"
 }
 
 version = project.mod_version
@@ -72,7 +73,7 @@ publishing {
 			from components.java
 			
 			pom {
-				name = 'Wynn API'
+				name = project.archives_base_name
 				description = 'A Fabric library mod to wrap the Wynncraft API v3 and provide easy-to-use functionality for other mods.'
 				url = 'https://github.com/hezaerd/wynn-api'
 
@@ -105,9 +106,60 @@ publishing {
 			name = "GitHubPackages"
 			url = uri("https://maven.pkg.github.com/hezaerd/wynn-api")
 			credentials {
-				username = System.getenv("USERNAME")
-				password = System.getenv("TOKEN")
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
 			}
 		}
 	}
+}
+
+modrinth {
+	token = System.getenv("MODRINTH_TOKEN")
+	projectId = modrinth_project_id
+	versionNumber = "${version}+${minecraft_version}"
+	versionType = version_type
+	uploadFile = remapJar
+	changelog = generateChangelog(project)
+	gameVersions = [minecraft_version]
+	loaders = ["fabric"]
+	dependencies {
+		required.project "fabric-api"
+	}
+	
+	syncBodyFrom = rootProject.file("README.md").text
+}
+
+static String generateChangelog(Project project) {
+	def changelogFile = project.rootProject.file("changelog.md")
+	if (!changelogFile.exists()) {
+		println "WARNING: changelog.md file not found at ${changelogFile.absolutePath}. No changelog will be generated."
+		return "No changelog available."
+	}
+	
+	def currentVersion = project.version.toString()
+	def changelogContent = changelogFile.text
+	def changelogBuilder = new StringBuilder()
+	boolean inCurrentVersionSection = false
+
+	def versionHeaderPattern = ~/##\s*(v?${currentVersion.replace('.', '\\.')})/
+	
+	changelogContent.eachLine { line ->
+		if (line.matches(versionHeaderPattern)) {
+			inCurrentVersionSection = true
+			return
+		} else if (line.startsWith("## ") && inCurrentVersionSection) {
+			inCurrentVersionSection = false
+		}
+
+		if (inCurrentVersionSection) {
+			changelogBuilder.append(line).append("\n")
+		}
+	}
+
+	def finalChangelog = changelogBuilder.toString().trim()
+	if (finalChangelog.isEmpty()) {
+		println "WARNING: No changelog entries found for version '${currentVersion}' in changelog.md."
+		return "No changelog was specified for version ${currentVersion}."
+	}
+	return finalChangelog
 }
