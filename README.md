@@ -68,14 +68,14 @@ This is a library mod that other mods depend on. Simply download and place the J
 import com.hezaerd.wapi.WapiClient;
 
 // Create a client instance
-WapiClient client = new WapiClient();
+WapiClient wapi = new WapiClient();
 ```
 
 ### Getting Player Data
 
 ```java
 // Get player information
-client.player().getPlayer("playerName").thenAccept(playerData -> {
+wapi.player().getPlayer("playerName").thenAccept(playerData -> {
     if (playerData != null) {
         System.out.println("Player: " + playerData.getUsername());
         System.out.println("Guild: " + playerData.getGuild().getName());
@@ -83,7 +83,7 @@ client.player().getPlayer("playerName").thenAccept(playerData -> {
 });
 
 // Get player characters
-client.player().getCharacters("playerName").thenAccept(characters -> {
+wapi.player().getCharacters("playerName").thenAccept(characters -> {
     characters.forEach(character -> {
         System.out.println("Character: " + character.getNickname());
         System.out.println("Level: " + character.getLevel());
@@ -95,7 +95,7 @@ client.player().getCharacters("playerName").thenAccept(characters -> {
 
 ```java
 // Get guild data
-client.guild().getGuild("guildName").thenAccept(guildData -> {
+wapi.guild().getGuild("guildName").thenAccept(guildData -> {
     if (guildData != null) {
         System.out.println("Guild: " + guildData.getName());
         System.out.println("Level: " + guildData.getLevel());
@@ -108,7 +108,7 @@ client.guild().getGuild("guildName").thenAccept(guildData -> {
 
 ```java
 // Get all items
-client.item().getAllItems().thenAccept(items -> {
+wapi.item().getAllItems().thenAccept(items -> {
     items.forEach((name, item) -> {
         System.out.println("Item: " + name + " (Tier: " + item.getTier() + ")");
     });
@@ -119,7 +119,7 @@ client.item().getAllItems().thenAccept(items -> {
 
 ```java
 // Search for players
-client.search().searchPlayers("playerName").thenAccept(results -> {
+wapi.search().searchPlayers("playerName").thenAccept(results -> {
     results.forEach(player -> {
         System.out.println("Found player: " + player);
     });
